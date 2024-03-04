@@ -32,7 +32,10 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 
-dotenv.config({ path: "./config/config.env" });
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  dotenv.config({ path: "./config/config.env" });
+}
+
 app.use(
   express.json({
     limit: "10mb",
