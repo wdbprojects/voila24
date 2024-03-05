@@ -1,4 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "@/components/comps/theme-provider";
 import TopNav from "./TopNav";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
@@ -18,7 +19,9 @@ import LogoLight from "@/assets/images/voila-logo-light.png";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
-  const [logout] = useLazyLogoutQuery();
+  const [logout, { isSuccess }] = useLazyLogoutQuery();
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -32,6 +35,10 @@ const Header = () => {
   });
   const { cartItems, numItemsInCart } = useSelector((state) => {
     return state.cartState;
+  });
+
+  useEffect(() => {
+    if (isSuccess) navigate(0);
   });
 
   return (
