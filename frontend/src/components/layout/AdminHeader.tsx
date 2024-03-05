@@ -7,7 +7,6 @@ import { Button } from "../ui/button";
 import { Menu, MoonStar, ShoppingCart, Sun } from "lucide-react";
 import DropdownBtn from "../comps/DropdownBtn";
 import { routes } from "@/data/siteLinks.js";
-import SearchBar from "./SearchBar";
 /* RTK */
 import { useSelector } from "react-redux";
 import { useGetMeQuery } from "@/redux/api/userApi";

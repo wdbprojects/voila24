@@ -14,8 +14,8 @@ import { ChevronDown } from "lucide-react";
 const DropdownBtn = ({ user, logout }) => {
   const navigate = useNavigate();
 
-  const logoutHandler = () => {
-    logout();
+  const logoutHandler = async () => {
+    await logout();
     navigate(0);
   };
 

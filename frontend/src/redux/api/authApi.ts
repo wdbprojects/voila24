@@ -40,13 +40,16 @@ export const authApi = createApi({
       },
     }),
     logout: builder.query({
+      query: () => "/logout",
+    }),
+    /* logout: builder.query({
       query() {
         return {
           url: "/logout",
           method: "GET",
         };
       },
-    }),
+    }), */
   }),
 });
 
