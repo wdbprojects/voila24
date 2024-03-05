@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   searchTerm: "",
-  currentTheme: localStorage.getItem("voila-theme"),
+  currentTheme: "dark",
 };
 
 const searchSlice = createSlice({
