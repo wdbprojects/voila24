@@ -10,6 +10,10 @@ import orderRouter from "./routes/orderRoutes.js";
 import paymentRouter from "./routes/paymentRoutes.js";
 import { fileURLToPath } from "url";
 
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({ path: "backend/config/config.env" });
+}
+
 import path from "path";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -62,6 +66,8 @@ if (process.env.NODE_ENV === "PRODUCTION") {
 
 /* ERROR MIDDLEWARE */
 app.use(errorMiddleware);
+
+console.log(process.env.CONNECTION_STRING);
 
 const serverConnect = async () => {
   try {
