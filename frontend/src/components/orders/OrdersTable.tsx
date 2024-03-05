@@ -381,14 +381,17 @@ const OrdersTable = () => {
   }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
 
   useEffect(() => {
-    if (error) {
-      toast.error(error?.data?.message);
-    }
     if (orderSuccess) {
       dispatch(clearCart());
       navigate("/me/orders");
     }
-  }, [error, orderSuccess]);
+  }, [orderSuccess]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error?.data?.message);
+    }
+  }, [error]);
 
   return (
     <Table

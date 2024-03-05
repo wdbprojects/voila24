@@ -67,8 +67,6 @@ if (process.env.NODE_ENV === "PRODUCTION") {
 /* ERROR MIDDLEWARE */
 app.use(errorMiddleware);
 
-console.log(process.env.CONNECTION_STRING);
-
 const serverConnect = async () => {
   try {
     await connectDB(DB_URI);

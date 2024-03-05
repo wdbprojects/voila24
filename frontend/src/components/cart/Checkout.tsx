@@ -30,7 +30,6 @@ import {
   useStripeCheckoutSessionMutation,
 } from "@/redux/api/orderApi";
 import { toast } from "sonner";
-import { clearCart } from "@/redux/features/cartSlice";
 
 const Checkout = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
