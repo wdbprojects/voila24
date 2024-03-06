@@ -45,8 +45,8 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 /* LOGOUT USER -> POST /api/v1/logout */
-const logoutUser = catchAsyncErrors(async (req, res, next) => {
-  await res.cookie(
+const logoutUser = catchAsyncErrors((req, res, next) => {
+  /* await res.cookie(
     "token",
     { domain: "https://rich-pink-brown-bear-gear.cyclic.app", path: "/" },
     {
@@ -55,11 +55,11 @@ const logoutUser = catchAsyncErrors(async (req, res, next) => {
       SameSite: "none",
       Secure: true,
     },
-  );
-  /* await res.clearCookie("token", null, {
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  }); */
+  ); */
+  res.clearCookie("token", {
+    domain: "https://rich-pink-brown-bear-gear.cyclic.app",
+    path: "/",
+  });
   res.status(200).json({
     message: "User logged out",
   });
