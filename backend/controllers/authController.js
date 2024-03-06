@@ -48,7 +48,7 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
 const logoutUser = catchAsyncErrors(async (req, res, next) => {
   await res.cookie(
     "token",
-    { path: "/" },
+    { domain: "https://rich-pink-brown-bear-gear.cyclic.app", path: "/" },
     {
       expires: new Date(Date.now()),
       httpOnly: true,
