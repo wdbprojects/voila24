@@ -86,14 +86,14 @@ const Header = () => {
           </div>
 
           {/* SEARCH FIELD */}
-          <div className="w-auto flex-auto">
+          <div className="w-auto flex-auto hidden lg:block">
             <SearchBar />
           </div>
 
           {/* TOP RIGHT ICONS */}
-          <div className="flex items-center md:justify-end  gap-4">
+          <div className="flex items-center md:justify-end gap-4">
             {user ? (
-              <div className="flex justify-start items-center gap-1">
+              <div className="hidden md:flex justify-start items-center gap-1">
                 <NUButton
                   isIconOnly
                   radius="sm"
@@ -115,7 +115,7 @@ const Header = () => {
             ) : (
               <Link
                 to="/login"
-                className="font-medium transition-colors border dark:text-white border-transparent hover:border-black dark:hover:border-white rounded-lg"
+                className="hidden md:block font-medium transition-colors border dark:text-white border-transparent hover:border-black dark:hover:border-white rounded-lg"
               >
                 <Button
                   variant="outline"
@@ -163,7 +163,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <TopNav />
+      <TopNav user={user} />
     </>
   );
 };

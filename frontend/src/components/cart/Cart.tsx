@@ -43,13 +43,13 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mt-8 ">
+    <div className="container mt-8 px-2 sm:px-4">
       {/* INNER CONTAINER */}
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-12 gap-4">
         {/* CART ITEM */}
-        <div className="col-span-12 lg:col-span-8 bg-white dark:bg-zinc-950 rounded-sm pl-4 pr-6 pt-4 pb-8">
+        <div className="col-span-12 lg:col-span-8 bg-white dark:bg-zinc-950 rounded-sm sm:pl-4 sm:pr-6 pt-2 sm:pt-4 pb-8">
           {/* CART HEADER */}
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between px-2 sm:px-4">
             {cartItems.length === 0 && (
               <h2 className="text-2xl font-semibold">
                 Your Voila! Cart is empty.{" "}
@@ -65,7 +65,9 @@ const Cart = () => {
                 <span className="font-semibold">{numItemsInCart}</span> products
                 currently in your cart
               </p>
-              <span className="text-sm text-right font-medium">Price</span>
+              <span className="hidden xs:block text-sm text-right font-medium">
+                Price
+              </span>
             </div>
           </div>
           <Divider className="mb-4 mt-2" />
@@ -73,29 +75,22 @@ const Cart = () => {
           {cartItems.map((item) => {
             let stockArray = generateAmountOptions(item.stock);
             return (
-              <div key={item.productId} className="">
-                <div className="grid grid-cols-12 gap-8 rounded-sm my-8">
-                  {/* CHECKBOX */}
-                  {/* <div className="col-span-1 flex justify-center items-center ml-[5px]">
-                    <Checkbox
-                      defaultSelected
-                      icon={<Plus color="#0a0a0a" strokeWidth={2.5} />}
-                      color="primary"
-                      className="m-0 p-0"
-                    />
-                  </div> */}
+              <div key={item.productId} className="block">
+                <div className="grid grid-cols-12 gap-4 rounded-sm my-4 px-2 sm:px-4 pb-2 h-auto">
                   {/* IMAGE */}
-                  <div className="col-span-4">
-                    <Link to={`/products/${item.id}`}>
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        className="object-cover w-[300px] h-[130px]"
-                      />
-                    </Link>
-                  </div>
+                  <Link
+                    to={`/products/${item.id}`}
+                    className="block order-1 col-span-12 xs:col-span-4"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="block object-cover h-32 w-[95%] xs:w-[100%] border"
+                    />
+                  </Link>
+
                   {/* CONTENT */}
-                  <div className="col-span-6 pb-0">
+                  <div className="order-3 xs:order-2 col-span-12 xs:col-span-6 sm:col-span-6 pb-0">
                     <Link to={`/products/${item.id}`}>
                       <h3 className="text-lg font-medium leading-5 mb-0">
                         {item.name}
@@ -110,9 +105,9 @@ const Cart = () => {
                         Only 5 left in stock - order soon
                       </span>
                     )}
-                    <div className="flex items-center flex-start h-5 gap-4 mb-0 pb-0">
+                    <div className="flex items-center flex-start h-5 gap-0 sm:gap-4 mb-0 pb-0">
                       {item.price && (
-                        <div className="mt-0 text-sm text-neutral-900 dark:text-neutral-300 mb-0">
+                        <div className="mt-0 text-sm text-neutral-900 dark:text-neutral-300 mb-0 mr-[4px]">
                           Unit Price:{" "}
                           <span className="mb-0 font-semibold">
                             {formatPrice(item.price)}
@@ -121,7 +116,7 @@ const Cart = () => {
                       )}
                       <Divider orientation="vertical" />
                       {item.amount && (
-                        <div className="mt-0 text-sm text-neutral-900 dark:text-neutral-300 mb-0">
+                        <div className="mt-0 ml-[4px] text-sm text-neutral-900 dark:text-neutral-300 mb-0">
                           Quantity:{" "}
                           <span className="mb-0 font-semibold">
                             {item.amount}
@@ -148,7 +143,7 @@ const Cart = () => {
                       </div>
                     )}
                     {/* CREATE ARRAY FROM */}
-                    <div className="mt-4 h-5 flex items-center justify-start gap-4">
+                    <div className="mt-4 h-5 flex flex-wrap items-center justify-start gap-4">
                       <div className="min-w-[100px]">
                         <Select
                           onValueChange={(value) => {
@@ -175,8 +170,8 @@ const Cart = () => {
                           </SelectContent>
                         </Select>
                       </div>
-                      <Divider orientation="vertical" />
-                      <div className="text-xs leading-4">
+
+                      <div className="text-xs sm:leading-4">
                         <Button
                           variant="light"
                           className="text-xs text-red-800 font-medium"
@@ -189,18 +184,20 @@ const Cart = () => {
                           Delete
                         </Button>
                       </div>
-                      <Divider orientation="vertical" />
+
                       <div className="text-xs leading-4">
                         <Link to="">Save</Link>
                       </div>
-                      <Divider orientation="vertical" className="text-white" />
-                      <div className="text-xs leading-4">
+
+                      {/* <div className="text-xs leading-4">
                         <Link to="">Compare</Link>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
+
                   {/* PRICE */}
-                  <div className="col-span-2 text-right text-lg font-bold">
+                  <div className="order-2 xs:order-3 col-span-12 xs:col-span-2 sm:col-span-2 text-left xs:text-right text-lg font-bold">
+                    <span className="xs:hidden">Price: </span>
                     {formatPrice(item.price * item.amount)}
                   </div>
                 </div>
@@ -210,15 +207,15 @@ const Cart = () => {
           })}
 
           <div className="text-right">
-            <h4 className="text-lg tracking-wide">
+            <h4 className="text-lg tracking-wide hidden lg:block px-2">
               Subtotal ({numItemsInCart} items):{" "}
               <span className="font-semibold">{formatPrice(cartTotal)}</span>
             </h4>
           </div>
         </div>
         {/* COMPLETE PURCHASE */}
-        <div className="col-span-12 lg:col-span-4">
-          <div className="bg-white dark:bg-zinc-950 py-4 rounded">
+        <div className="col-span-12 lg:col-span-4 flex justify-end">
+          <div className="bg-white dark:bg-zinc-950 py-4 rounded w-full xs:w-[75%] sm:w-[50%] lg:w-full">
             <div className="text-right px-8 mt-2 mr-[5px]">
               <h4 className="text-lg tracking-wide">
                 Subtotal ({numItemsInCart} items):{" "}

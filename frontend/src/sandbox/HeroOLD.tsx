@@ -9,7 +9,7 @@ const Hero = () => {
         style={{ backgroundImage: `url(${hero1})` }}
         className="relative aspect-square md:aspect-[2.4/1] overflow-hidden bg-cover max-h-[250px] w-full"
       >
-        <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
+        <div className="h-full w-full flex flex-col justify-center items-center text-center sm:gap-y-8">
           <div className="font-bold text-xl sm:text-3xl lg:text-5xl sm:max-w-xl max-w-xs text-black dark:text-white bg-secondary/50 p-4 rounded-lg">
             <h3 className="mb-2">Featured Products</h3>
             <Button color="primary" size="md">

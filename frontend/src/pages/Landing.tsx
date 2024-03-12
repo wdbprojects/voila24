@@ -8,7 +8,7 @@ const Landing = () => {
     <>
       <MetaData title="Homepage" />
       <div className="sm:flex sm:justify-between bg-gray-100 pb-8 dark:bg-gray-950">
-        <div className="container">
+        <div className="container px-0 lg:px-6 ">
           <Hero />
           <FeaturedProducts />
         </div>

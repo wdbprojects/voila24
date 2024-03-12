@@ -67,16 +67,16 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container px-1 sm:p-2 lg:p-4 pb-4">
       <BreadcrumbsComp />
       {/* INNER CONTAINER */}
-      <div className="border flex justify-between p-4 gap-6">
+      <div className="lg:border grid grid-cols-12 justify-between p-2 sm:p-4 gap-6">
         {/* LEFT COLUMN */}
-        <div className="min-h-[450px] md:flex-[10] w-full">
+        <div className="sm:order-1 col-span-12 sm:col-span-7 lg:col-span-5 w-full h-full">
           <ProductImages images={product.images} name={product.name} />
         </div>
         {/* CENTER COLUMN */}
-        <div className="border min-h-[450px] md:flex-[8] w-full p-2">
+        <div className="border sm:order-3 lg:order-2 col-span-12 sm:col-span-12 lg:col-span-4 w-full p-2">
           {/* HEADER & TITLE */}
           <div className="flex flex-col">
             <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
@@ -156,7 +156,7 @@ const ProductDetails = () => {
           </div>
         </div>
         {/* RIGHT COLUMN */}
-        <div className="border min-h-[450px] md:flex-[5] w-full px-4 py-2">
+        <div className="border sm:order-2 lg:order-3 col-span-12 sm:col-span-5 lg:col-span-3 w-full px-4 py-2">
           <div className="price">
             <span className="text-3xl font-bold">
               {formatPrice(product.price)}

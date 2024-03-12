@@ -73,7 +73,7 @@ const UpdateProfile = () => {
 
   return (
     <UserLayout>
-      <div className="my-4 w-[26rem] mx-auto text-left border p-4 sm:p-8 rounded">
+      <div className="my-4 sm:w-[26rem] max-w-[400px] mx-auto text-left border p-4 sm:p-8 rounded">
         <h2 className="mb-12 text-xl text-center font-semibold">
           Update Profile
         </h2>

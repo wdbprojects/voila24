@@ -25,7 +25,7 @@ const DropdownBtn = ({ user, logout }) => {
         <Button
           variant="outline"
           size="sm"
-          className="text-sm dark:text-white hover:no-underline hover:border-black  dark:hover:border-white rounded-[3px] hover:bg-transparent focus-visible:ring-0 pr-2 py-[19px] rounded-lg"
+          className="text-sm dark:text-white hover:no-underline hover:border-black  dark:hover:border-white rounded-[3px] hover:bg-transparent focus-visible:ring-0 pe-0 md:pr-2 py-[19px] rounded-lg"
         >
           <span className="flex text-sm font-light items-end justify-between gap-1.5">
             <span>

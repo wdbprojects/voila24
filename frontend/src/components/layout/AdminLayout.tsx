@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarDashboard from "../comps/SidebarDashboard";
+import SidebarDashHor from "@/components/comps/SidebarDashHor";
 import {
   Gauge,
   Plus,
@@ -46,16 +46,14 @@ const AdminLayout = ({ children }) => {
   ];
 
   return (
-    <div className="container p-8">
-      <div className="border border-neutral-200 dark:border-neutral-700 w-[100%] rounded">
+    <div className="container p-2 sm:p-3 md:p-4 lg:p-6">
+      <div className="w-[100%]">
         <div className="mt-2 mb-4">
           <h2 className="text-center font-semibold text-xl">Admin Dashboard</h2>
         </div>
-        <div className="grid grid-cols-5">
-          <SidebarDashboard menuItems={menuItems} />
-          <div className="col-span-4 border border-neutral-200  dark:border-neutral-700 p-2 border-r-0 border-b-0">
-            {children}
-          </div>
+        <div>
+          <SidebarDashHor menuItems={menuItems} />
+          <article>{children}</article>
         </div>
       </div>
     </div>

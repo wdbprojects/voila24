@@ -110,11 +110,11 @@ const Checkout = () => {
   }, [error, isSuccess]);
 
   return (
-    <div className="container mt-8">
+    <div className="container xs:mt-2 sm:mt-4 md:mt-8 p-0 xs:px-2 sm:px-4 md:px-8">
       {/* INNER CONTAINER */}
       <div className="grid grid-cols-12 gap-8">
         {/* CHECKOUT INFO */}
-        <div className="col-span-12 lg:col-span-8 bg-white dark:bg-zinc-950 rounded-sm pl-4 pr-6 pt-4 px-4 pb-4">
+        <div className="col-span-12 lg:col-span-8 bg-white dark:bg-zinc-950 rounded-sm sm:pl-4 sm:pr-6 pt-4 px-4 pb-4">
           <Accordion
             type-="single"
             defaultValue={value}

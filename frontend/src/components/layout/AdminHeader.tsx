@@ -7,17 +7,27 @@ import { Button } from "../ui/button";
 import { Menu, MoonStar, ShoppingCart, Sun } from "lucide-react";
 import DropdownBtn from "../comps/DropdownBtn";
 import { routes } from "@/data/siteLinks.js";
+import SearchBar from "./SearchBar";
 /* RTK */
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setThemeRedux } from "@/redux/features/miscSlice";
 import { useGetMeQuery } from "@/redux/api/userApi";
 import { useLazyLogoutQuery } from "@/redux/api/authApi";
 import { Avatar, Badge, Button as NUButton } from "@nextui-org/react";
+import LogoDark from "@/assets/images/voila-logo-dark.png";
+import LogoLight from "@/assets/images/voila-logo-light.png";
 
-const AdminHeader = () => {
+const Header = () => {
   const { theme, setTheme } = useTheme();
   const [logout, { isSuccess }] = useLazyLogoutQuery();
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const currentTheme = useSelector((state) => {
+    return state.search.currentTheme;
+  });
 
   const { isLoading } = useGetMeQuery(); // prevents from resetting redux state
   const { user } = useSelector((state) => {
@@ -63,22 +73,27 @@ const AdminHeader = () => {
             </Sheet>
 
             {/* LOGO */}
-            <Link to="/" className="ml-2 md:ml-0 ">
-              <h1 className="text-xl font-bold dark:text-white">SHOPIT23</h1>
-            </Link>
+            <div className="pt-1">
+              <Link to="/" className="block ml-2 md:ml-0">
+                {/* <h1 className="text-xl font-bold dark:text-white"></h1> */}
+                <img
+                  src={currentTheme === "dark" ? LogoLight : LogoDark}
+                  alt="Voila! logo"
+                  className="max-w-[120px] pt-1"
+                />
+              </Link>
+            </div>
           </div>
 
           {/* SEARCH FIELD */}
-          <div className="w-auto flex-auto">
-            <h2 className="text-center dark:text-neutral-200 font-semibold text-xl">
-              Admin Dashboard
-            </h2>
+          <div className="w-auto flex-auto hidden lg:block">
+            {/* <SearchBar /> */}
           </div>
 
           {/* TOP RIGHT ICONS */}
-          <div className="flex items-center md:justify-end  gap-4">
+          <div className="flex items-center md:justify-end gap-4">
             {user ? (
-              <div className="flex justify-start items-center gap-1">
+              <div className="hidden md:flex justify-start items-center gap-1">
                 <NUButton
                   isIconOnly
                   radius="sm"
@@ -100,7 +115,7 @@ const AdminHeader = () => {
             ) : (
               <Link
                 to="/login"
-                className="font-medium transition-colors border dark:text-white border-transparent hover:border-black dark:hover:border-white rounded-lg"
+                className="hidden md:block font-medium transition-colors border dark:text-white border-transparent hover:border-black dark:hover:border-white rounded-lg"
               >
                 <Button
                   variant="outline"
@@ -118,6 +133,7 @@ const AdminHeader = () => {
               aria-label="Toggle Theme"
               className="dark:text-accent-white dark:text-white hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-white"
               onClick={() => {
+                dispatch(setThemeRedux(theme === "dark" ? "light" : "dark"));
                 setTheme(theme === "dark" ? "light" : "dark");
               }}
             >
@@ -147,8 +163,8 @@ const AdminHeader = () => {
           </div>
         </div>
       </header>
-      <TopNav />
+      <TopNav user={user} />
     </>
   );
 };
-export default AdminHeader;
+export default Header;
