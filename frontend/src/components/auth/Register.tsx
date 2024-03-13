@@ -69,7 +69,7 @@ const Register = () => {
   }, [isAuthenticated]);
 
   return (
-    <div className="flex justify-center items-center w-full h-full">
+    <div className="flex justify-center items-center w-[90%] mx-auto sm:w-full h-full">
       <div className="mt-8 w-[26rem] mx-auto text-left border p-4 sm:p-8 rounded">
         <h2 className="mb-12 text-xl text-center font-semibold">Register</h2>
         {/* FORM */}
