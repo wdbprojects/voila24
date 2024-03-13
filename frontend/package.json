@@ -32,6 +32,7 @@
     "clsx": "^2.1.0",
     "cmdk": "^0.2.1",
     "countries-list": "^3.0.6",
+    "daisyui": "^4.7.3",
     "date-fns": "^3.3.1",
     "embla-carousel-react": "^8.0.0-rc19",
     "framer-motion": "^10.16.4",
